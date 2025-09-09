@@ -2,23 +2,26 @@
 
 set -ouex pipefail
 
-### Install packages
+cd /ctx
 
-# Packages can be installed from any enabled yum repo on the image.
-# RPMfusion repos are available by default in ublue main images
-# List of rpmfusion packages can be found here:
-# https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
+# Install packages
 
-# this installs a package from fedora repos
-dnf5 install -y tmux 
+INSTALL_SCRIPTS=(
+    eza.sh
+    incus.sh
+    hyprland.sh
+)
 
-# Use a COPR Example:
-#
-# dnf5 -y copr enable ublue-os/staging
-# dnf5 -y install package
-# Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+for s in ${INSTALL_SCRIPTS[@]}; do
+    bash install/$s
+done
 
-#### Example for enabling a System Unit File
+# System config
 
-systemctl enable podman.socket
+SYSTEM_SCRIPTS=(
+    nsos-just.sh
+)
+
+for s in ${SYSTEM_SCRIPTS[@]}; do
+    bash system/$s
+done
