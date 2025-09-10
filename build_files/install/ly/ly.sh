@@ -41,5 +41,8 @@ rm -r $TEMP
 unset ZIG_GLOBAL_CACHE_DIR
 dnf5 remove -y ${BUILD_DEPS[@]}
 
+# SELinux policy - https://codeberg.org/fairyglade/ly/issues/494
+chcon system_u:object_r:xdm_exec_t:s0 /usr/bin/ly
+
 systemctl enable ly.service
 systemctl disable getty@tty2.service
