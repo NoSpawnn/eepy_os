@@ -100,6 +100,18 @@ build $target_image=image_name $tag=default_tag:
         --tag "${target_image}:${tag}" \
         .
 
+buildrun $target_image=image_name $tag=default_tag:
+    #!/usr/bin/env bash
+
+    just --tempdir ~/tmp build ${target_image} ${tag}
+
+    if [[ $? -ne 0 ]]; then
+        echo "Image build failed"
+        exit
+    fi
+
+    podman run -it --rm localhost/nsos:latest
+
 # Command: _rootful_load_image
 # Description: This script checks if the current user is root or running under sudo. If not, it attempts to resolve the image tag using podman inspect.
 #              If the image is found, it loads it into rootful podman. If the image is not found, it pulls it from the repository.
