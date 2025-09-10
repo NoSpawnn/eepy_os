@@ -6,18 +6,22 @@
 
 set -euox pipefail
 
-dnf5 install -y incus
+dnf5 install -y incus incus-agent
 
 TEMP=$(mktemp -d)
 
+INCUS_PATH=$(which incus)
+rm $INCUS_PATH
 curl -fLs https://github.com/lxc/incus/releases/latest/download/bin.linux.incus.x86_64 -o $TEMP/incus
-rm /usr/bin/incus
-mv $TEMP/incus /usr/bin/incus
-chmod 0755 /usr/bin/incus
+mv $TEMP/incus $INCUS_PATH
+chmod 0755 $INCUS_PATH
 
+INCUS_AGENT_PATH=$(which incus-agent)
+rm $INCUS_AGENT_PATH
 curl -fLs https://github.com/lxc/incus/releases/latest/download/bin.linux.incus-agent.x86_64 -o $TEMP/incus-agent
-rm /usr/bin/incus-agent
-mv $TEMP/incus-agent /usr/bin/incus-agent
-chmod 0755 /usr/bin/incus-agent
+mv $TEMP/incus-agent $INCUS_AGENT_PATH
+chmod 0755 $INCUS_AGENT_PATH
 
 rm -r $TEMP
+
+systemctl enable incus.service

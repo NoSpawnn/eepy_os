@@ -1,3 +1,4 @@
+[group('Virtualisation')]
 vm-new IMAGE="prompt" NAME="prompt" HOMEDIR="":
     #!/usr/bin/env bash
     source /usr/lib/ujust/ujust.sh
