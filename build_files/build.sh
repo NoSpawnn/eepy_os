@@ -15,7 +15,7 @@ INSTALL_SCRIPTS=(
     eza.sh
     incus.sh
     ohmyposh.sh
-    ly/ly.sh
+    # ly/ly.sh
     hyprland.sh
 )
 

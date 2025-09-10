@@ -16,3 +16,5 @@ PACKAGES=(
 dnf5 install -y --allowerasing \
     --setopt=install_weak_deps=False \
     "${PACKAGES[@]}"
+
+systemctl enable sddm
