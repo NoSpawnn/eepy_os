@@ -14,6 +14,7 @@ PACKAGES=(
     dolphin
     wofi
     waybar
+    fontawesome-fonts-all
     swaylock-effects
 )
 
