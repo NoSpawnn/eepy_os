@@ -17,6 +17,7 @@ INSTALL=(
     mesa-vdpau-drivers
     mesa-vulkan-drivers
     stow
+    zsh-autosuggestions
 )
 REMOVE=(
     vim-common vim-data vim-enhanced vim-filesystem vim-minimal # Nuke regular vim
