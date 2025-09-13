@@ -16,6 +16,8 @@ INSTALL=(
     mesa-dri-drivers
     mesa-vdpau-drivers
     mesa-vulkan-drivers
+    qemu
+    stow
 )
 REMOVE=(
     vim-common vim-data vim-enhanced vim-filesystem vim-minimal # Nuke regular vim
