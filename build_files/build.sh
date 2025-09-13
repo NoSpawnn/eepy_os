@@ -7,6 +7,8 @@ set -ouex pipefail
 PACKAGES=(
     zsh
     tailscale
+    fastfetch
+    flatpak
 )
 
 dnf5 install -y --setopt=install_weak_deps=False ${PACKAGES[@]}
