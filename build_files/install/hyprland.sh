@@ -15,6 +15,8 @@ PACKAGES=(
     waybar
     fontawesome-fonts-all
     swaylock-effects
+    cascadia-code-nf-fonts
+    cascadia-mono-nf-fonts
 )
 
 # Enable copr for swaylock-effects
