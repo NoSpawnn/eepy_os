@@ -1,0 +1,41 @@
+# module configuration, executed in order
+# you can include multiple instances of the same module
+modules:
+  - type: files
+    files:
+      - source: system
+        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+
+  - type: dnf
+    install:
+      packages:
+        - tailscale
+        - tmux
+        - tldr
+        - fzf
+        - zoxide
+        - zstd
+        - openssl
+        - just
+        - git # Just making sure :3
+        - incus
+
+  - type: script
+    snippets:
+      - mkdir -p /usr/share/ublue-os/just
+      - chmod 755 /usr/bin/ujust # Make ujust executable by all
+      - chmod 755 /usr/bin/ugum # Make ugum executable by all
+    scripts:
+      - install/eza.sh
+      - install/incus.sh
+
+  - type: systemd
+    system:
+      enabled:
+        - sshd
+        - tailscaled
+
+  - type: justfiles
+    validate: true
+
+  - type: signing

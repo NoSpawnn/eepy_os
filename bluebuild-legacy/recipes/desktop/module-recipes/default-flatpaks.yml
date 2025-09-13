@@ -1,0 +1,49 @@
+modules:
+  - type: default-flatpaks
+    configurations:
+      - scope: system
+        repo:
+          title: Flathub
+          name: flathub
+          url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        install:
+          - com.github.tchx84.Flatseal
+          - io.github.flattool.Warehouse
+          - com.borgbase.Vorta
+          - it.mijorus.gearlever
+
+      - scope: user
+        repo:
+          title: Flathub (user)
+          name: flathub-user
+          url: https://dl.flathub.org/repo/flathub.flatpakrepo
+        install:
+          - app.zen_browser.zen
+          - org.upscayl.Upscayl
+          - fr.handbrake.ghb
+          - io.github.wiiznokes.fan-control
+          - io.missioncenter.MissionCenter
+          - org.onlyoffice.desktopeditors
+          - md.obsidian.Obsidian
+          - com.rtosta.zapzap
+          - org.kde.kdenlive
+          - io.github.pwr_solaar.solaar
+          - org.fkoehler.KTailctl
+          - com.bitwarden.desktop
+          - org.signal.Signal
+
+          # "Inspired" by https://github.com/ublue-os/aurora/blob/main/flatpaks/system-flatpaks.list
+          - dev.zed.Zed
+          - io.podman_desktop.PodmanDesktop
+          - io.github.getnf.embellish
+          - me.iepure.devtoolbox
+          - sh.loft.devpod
+
+          # - com.valvesoftware.Steam
+          # - net.lutris.Lutris
+          # - io.github.Foldex.AdwSteamGtk
+          - dev.vencord.Vesktop
+          - chat.revolt.RevoltDesktop
+          # - net.davidotek.pupgui2
+          - com.obsproject.Studio
+          - com.github.Matoking.protontricks

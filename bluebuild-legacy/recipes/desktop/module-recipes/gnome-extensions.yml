@@ -1,0 +1,12 @@
+modules:
+  - type: gnome-extensions
+    install:
+      - Dash to Panel
+      - Blur my Shell
+      - GSConnect
+      - Quick Close in Overview
+      - SimpleWeather
+      - RebootToUEFI
+      - Gnome 4x UI Improvements
+      - Media Progress
+      - Quick Settings Audio Devices Renamer

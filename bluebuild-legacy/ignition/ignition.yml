@@ -1,0 +1,56 @@
+variant: fcos
+version: 1.6.0
+
+passwd:
+  users:
+    - name: red
+      ssh_authorized_keys:
+        - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCZLZAXvv/n2KXlwrClawqDnNIKZgddI8p7ZAtrhqUuc0cpzDjOQODTM24ATwnFH01MC8LDtM3nUDfsWZ5aLhgu/M0o4B5lGt/LKlJPAMqNSNTbGk0XmNf+CfLTT0fnJmrC9I/hyr4z/n7YBhF5XLPS4479GYmAyMxofi5ixEFL9ZQNFi+ZJbESlUIruhRKYdczvqI4nkHf6wmWLQ9PJ81fG4wOU2a9oErFk4z0jV2D3QvnScB0VSOZLQjnNx2w63xHPuSJHa43x1i/37nQxMu7JAQVI8f/g7emTbz+/n9X1hlZq9/6R2VuxTSzTQxfzmNjX8lqW2XGjoHHfQXObveTuOOAhsXlz1S8JASL9xWV9STtAPrb2o75fs0QAlj7lHFk7by5t44tyAear8uEjM4mOyBO/OFjkfBEyvV7vhJuy1d8RlAGIl02rpSu9qcbjd6zH2fYKa2wluPGIgKo7C1j/eorDYUDCqLj24cO3HOhSY9aToKIr/4a9Z8CPpCXtdE= red@spawnpoint
+      shell: /bin/bash
+      password_hash: $y$j9T$7uJJDXzavhb2Fs6TsjYqd1$CmjOQbJcDeqVDnxArN442R6x2wWnxky/oGY58zGAnVB
+      groups:
+        - wheel
+
+storage:
+  directories:
+    - path: /etc/nsos-autorebase
+      mode: 0754
+
+systemd:
+  units:
+    - name: nsos-unsigned-autorebase.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=nsos autorebase to unsigned OCI and reboot
+        ConditionPathExists=!/etc/nsos-autorebase/unverified
+        ConditionPathExists=!/etc/nsos-autorebase/signed
+        After=network-online.target
+        Wants=network-online.target
+        [Service]
+        Type=oneshot
+        StandardOutput=journal+console
+        ExecStart=/usr/bin/rpm-ostree rebase --bypass-driver ostree-unverified-registry:ghcr.io/nospawnn/nsos-server:latest
+        ExecStart=/usr/bin/touch /etc/nsos-autorebase/unverified
+        ExecStart=/usr/bin/systemctl disable nsos-unsigned-autorebase.service
+        ExecStart=/usr/bin/systemctl reboot
+        [Install]
+        WantedBy=multi-user.target
+    - name: nsos-signed-autorebase.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=nsos autorebase to signed OCI and reboot
+        ConditionPathExists=/etc/nsos-autorebase/unverified
+        ConditionPathExists=!/etc/nsos-autorebase/signed
+        After=network-online.target
+        Wants=network-online.target
+        [Service]
+        Type=oneshot
+        StandardOutput=journal+console
+        ExecStart=/usr/bin/rpm-ostree rebase --bypass-driver ostree-image-signed:docker://ghcr.io/nospawnn/nsos-server:latest
+        ExecStart=/usr/bin/touch /etc/nsos-autorebase/signed
+        ExecStart=/usr/bin/systemctl disable nsos-signed-autorebase.service
+        ExecStart=/usr/bin/systemctl reboot
+        [Install]
+        WantedBy=multi-user.target

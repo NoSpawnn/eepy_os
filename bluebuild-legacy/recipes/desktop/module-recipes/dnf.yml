@@ -1,0 +1,14 @@
+modules:
+  - type: dnf
+    install:
+      packages:
+        - solaar-udev
+        - lm_sensors
+        - qemu-kvm
+    remove:
+      packages:
+        - firefox
+        - firefox-langpacks
+        - fedora-flathub-remote
+        - fedora-workstation-repositories
+        - brltty

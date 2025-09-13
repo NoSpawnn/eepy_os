@@ -1,0 +1,56 @@
+modules:
+  # Stealing a bunch of stuff from uBlue - https://github.com/ublue-os/main/blob/main/build_files/install.sh
+  - type: dnf
+    repos:
+      nonfree: negativo17
+    install:
+      packages:
+        - libopenjph
+        - repo: fedora-multimedia
+          packages:
+            - libheif
+            - mesa-vdpau-drivers
+    replace:
+      - from-repo: fedora-multimedia
+        packages:
+          - libva
+          - mesa-dri-drivers
+          - mesa-filesystem
+          - mesa-libEGL
+          - mesa-libGL
+          - mesa-libGLU
+          - mesa-libgbm
+          - mesa-va-drivers
+          - mesa-vulkan-drivers
+      # https://github.com/ublue-os/main/pull/692
+      - from-repo: fedora
+        packages:
+          - old: OpenCL-ICD-Loader
+            new: ocl-icd
+
+  - type: dnf
+    install:
+      packages:
+        - repo: fedora-multimedia
+          packages:
+            - libva-utils
+            - heif-pixbuf-loader
+            - pipewire-libs-extra
+    replace:
+      - from-repo: fedora-multimedia
+        packages:
+          - old: ffmpeg-free
+            new: ffmpeg
+            allow-erasing: true
+          - old: libfdk-aac-free
+            new: libfdk-aac
+          - old: libavcodec-free
+            new: libavcodec
+
+  - type: script
+    scripts:
+      - ublue.sh
+      - udev/android.sh
+      - udev/game-devices.sh
+      - udev/fancontrol.sh
+      # - install/orcaslicer-flatpak.sh
