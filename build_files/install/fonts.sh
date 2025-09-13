@@ -1,4 +1,5 @@
 #/usr/bin/env bash
+# https://docs.fedoraproject.org/en-US/quick-docs/fonts/
 
 set -euox pipefail
 
@@ -9,5 +10,8 @@ unzip $TEMP/0xproto.zip -d $TEMP
 
 mkdir /usr/share/fonts/0xproto
 cp $TEMP/*.ttf /usr/share/fonts/0xproto/
+chown -R /usr/share/fonts/0xproto
+chmod 644 /usr/share/fonts/0xproto/*
+restorecon -vFr /usr/share/fonts/0xproto
 
 rm -r $TEMP
