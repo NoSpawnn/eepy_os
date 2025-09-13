@@ -35,6 +35,7 @@ INSTALL_SCRIPTS=(
     # ly/ly.sh
     hyprland.sh
     amdgpu_top.sh
+    fonts.sh
 )
 
 for s in ${INSTALL_SCRIPTS[@]}; do
