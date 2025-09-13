@@ -1,7 +1,7 @@
 # Install flatpaks from a file
 [group('Config')]
 [no-cd]
-install-flatpaks LIST_FILE="" SCOPE="system":
+install-flatpaks LIST_FILE="" SCOPE="user":
     #!/usr/bin/env bash
     flatpaks=$(cat $(realpath {{ LIST_FILE }}) | tr '\n' ' ' )
     if [[ {{ SCOPE }} == 'user' ]]; then
