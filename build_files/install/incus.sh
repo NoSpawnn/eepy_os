@@ -6,7 +6,7 @@
 
 set -euox pipefail
 
-dnf5 install -y incus incus-agent
+dnf5 install -y incus incus-agent qemu qemu-system-x86
 
 TEMP=$(mktemp -d)
 

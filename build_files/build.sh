@@ -16,7 +16,6 @@ INSTALL=(
     mesa-dri-drivers
     mesa-vdpau-drivers
     mesa-vulkan-drivers
-    qemu
     stow
 )
 REMOVE=(
@@ -63,7 +62,7 @@ for unit in ${SYSTEM_UNITS[@]}; do
 done
 
 GLOBAL_UNITS=(
-    add-user-flathub-remote.service
+    # add-user-flathub-remote.service
 )
 
 for unit in ${GLOBAL_UNITS[@]}; do
