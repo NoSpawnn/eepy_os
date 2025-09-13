@@ -11,7 +11,14 @@ PACKAGES=(
     kitty
     sddm
     dunst
+    dolphin
+    wofi
+    waybar
+    swaylock-effects
 )
+
+# Enable copr for swaylock-effects
+dnf5 copr enable eddsalkield/swaylock-effects -y
 
 dnf5 install -y --allowerasing \
     --setopt=install_weak_deps=False \
