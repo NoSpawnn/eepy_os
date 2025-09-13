@@ -4,14 +4,27 @@ set -ouex pipefail
 
 # Install packages
 
-PACKAGES=(
+INSTALL=(
     zsh
     tailscale
     fastfetch
     flatpak
+    amd-ucode-firmware
+    amd-gpu-firmware
+    btrfs-progs
+    neovim
+    mesa-dri-drivers
+    mesa-vdpau-drivers
+    mesa-vulkan-drivers
+)
+REMOVE=(
+    vim-common vim-data vim-enhanced vim-filesystem vim-minimal # Nuke regular vim
 )
 
-dnf5 install -y --setopt=install_weak_deps=False ${PACKAGES[@]}
+dnf5 install -y --setopt=install_weak_deps=False ${INSTALL[@]}
+dnf5 remove -y ${REMOVE[@]}
+
+ln -sf /usr/bin/nvim /usr/bin/vim
 
 INSTALL_SCRIPTS=(
     eza.sh
@@ -19,6 +32,7 @@ INSTALL_SCRIPTS=(
     ohmyposh.sh
     # ly/ly.sh
     hyprland.sh
+    amdgpu_top.sh
 )
 
 for s in ${INSTALL_SCRIPTS[@]}; do
