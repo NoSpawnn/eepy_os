@@ -22,6 +22,14 @@ curl -fLs https://github.com/lxc/incus/releases/latest/download/bin.linux.incus-
 mv $TEMP/incus-agent $INCUS_AGENT_PATH
 chmod 0755 $INCUS_AGENT_PATH
 
+# Also install ssh2inucus - https://github.com/mobydeck/ssh2incus
+ssh2incus_url=$(curl -s https://api.github.com/repos/mobydeck/ssh2incus/releases/latest \
+    | jq -r '.assets[].browser_download_url' \
+    | grep ".*x86_64\.rpm")
+curl -fLs $ssh2incus_url -o $TEMP/ssh2incus.rpm
+dnf install -y $TEMP/ssh2incus.rpm
+
 rm -r $TEMP
 
 systemctl enable incus.service
+systemctl enable ssh2incus.service
