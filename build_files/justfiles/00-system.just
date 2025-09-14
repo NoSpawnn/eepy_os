@@ -26,5 +26,5 @@ bios-info:
     #!/usr/bin/bash
     echo "Manufacturer: $(sudo dmidecode -s baseboard-manufacturer)"
     echo "Product Name: $(sudo dmidecode -s baseboard-product-name)"
-    echo "Version: $(sudo dmidecode -s bios-version)"
+    echo "     Version: $(sudo dmidecode -s bios-version)"
     echo "Release Date: $(sudo dmidecode -s bios-release-date)"
