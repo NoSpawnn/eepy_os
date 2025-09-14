@@ -10,7 +10,7 @@ unzip $TEMP/0xproto.zip -d $TEMP
 
 mkdir /usr/share/fonts/0xproto
 cp $TEMP/*.ttf /usr/share/fonts/0xproto/
-chown -R /usr/share/fonts/0xproto
+chown -R root: /usr/share/fonts/0xproto
 chmod 644 /usr/share/fonts/0xproto/*
 restorecon -vFr /usr/share/fonts/0xproto
 
