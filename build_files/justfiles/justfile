@@ -2,7 +2,7 @@ set allow-duplicate-recipes := true
 set ignore-comments := true
 
 _default:
-    #!/usr/bin/bash
+    #!/usr/bin/env bash
     source /usr/lib/ujust/libformatting.sh
     /usr/bin/ujust --list --list-heading $'Available commands:\n' --list-prefix $' - '
 
