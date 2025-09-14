@@ -16,3 +16,4 @@ chmod 644 $FONT_DIR/*
 restorecon -vFr $FONT_DIR
 
 rm -r $TEMP
+fc-cache -fv
