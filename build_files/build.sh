@@ -2,7 +2,7 @@
 
 set -ouex pipefail
 
-# Install packages
+# Install packages (a lot of these will eventually be moved to a distrobox I think)
 
 INSTALL=(
     zsh
@@ -18,6 +18,7 @@ INSTALL=(
     mesa-vulkan-drivers
     stow
     zsh-autosuggestions
+    tldr
 )
 REMOVE=(
     vim-common vim-data vim-enhanced vim-filesystem vim-minimal # Nuke regular vim
@@ -48,11 +49,14 @@ done
 SYSTEM_CONFIG_SCRIPTS=(
     nsos-just.sh
     flatpak-system-remote-setup.sh
+    branding.sh
 )
 
 for s in ${SYSTEM_CONFIG_SCRIPTS[@]}; do
     bash /ctx/system_config/$s
 done
+
+localectl set-locale LANG=en_GB.UTF-8
 
 # systemd services
 
