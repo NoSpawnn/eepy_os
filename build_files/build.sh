@@ -56,8 +56,6 @@ for s in ${SYSTEM_CONFIG_SCRIPTS[@]}; do
     bash /ctx/system_config/$s
 done
 
-localectl set-locale LANG=en_GB.UTF-8
-
 # systemd services
 
 SYSTEM_UNITS=(
