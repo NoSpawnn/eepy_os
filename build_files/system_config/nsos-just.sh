@@ -5,12 +5,11 @@
 set -ouex pipefail
 
 NSOS_DIR=/usr/share/nsos
-
-rm -r /usr/share/ublue-os
 mkdir $NSOS_DIR
 
 # Overwrite ujust to point to my global justfile
-sed -i 's#ublue-os#nsos#' $(which ujust)
+sed -i 's#/usr/share/ublue-os#/usr/share/nsos#' $(which ujust)
+rm -r /usr/share/ublue-os
 
 # Copy in custom justfiles
 mkdir $NSOS_DIR/just
