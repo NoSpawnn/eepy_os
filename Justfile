@@ -103,7 +103,7 @@ build $target_image=image_name $tag=default_tag:
 buildrun $target_image=image_name $tag=default_tag:
     #!/usr/bin/env bash
 
-    just --tempdir ~/tmp build ${target_image} ${tag}
+    just build ${target_image} ${tag}
 
     if [[ $? -ne 0 ]]; then
         echo "Image build failed"
