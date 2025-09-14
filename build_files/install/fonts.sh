@@ -4,7 +4,7 @@
 set -euox pipefail
 
 TEMP=$(mktemp -d)
-FONT_DIR=/var/usrlocal/share/fonts/0xproto
+FONT_DIR=/usr/local/share/fonts/0xproto
 
 curl -fLs https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/0xProto.zip -o $TEMP/0xproto.zip
 unzip $TEMP/0xproto.zip -d $TEMP
