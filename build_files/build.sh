@@ -21,6 +21,7 @@ INSTALL=(
 )
 REMOVE=(
     vim-common vim-data vim-enhanced vim-filesystem vim-minimal # Nuke regular vim
+    firefox firefox-langpacks
 )
 
 dnf5 install -y --setopt=install_weak_deps=False ${INSTALL[@]}
