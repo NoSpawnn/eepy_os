@@ -50,6 +50,7 @@ SYSTEM_CONFIG_SCRIPTS=(
     nsos-just.sh
     flatpak-system-remote-setup.sh
     branding.sh
+    udev/fancontrol.sh
 )
 
 for s in ${SYSTEM_CONFIG_SCRIPTS[@]}; do
