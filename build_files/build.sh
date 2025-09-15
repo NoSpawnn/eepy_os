@@ -23,6 +23,7 @@ INSTALL=(
 REMOVE=(
     vim-common vim-data vim-enhanced vim-filesystem vim-minimal # Nuke regular vim
     firefox firefox-langpacks
+    nvtop
 )
 
 dnf5 update -y
