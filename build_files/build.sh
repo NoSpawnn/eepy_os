@@ -25,6 +25,7 @@ REMOVE=(
     firefox firefox-langpacks
 )
 
+dnf5 update -y
 dnf5 install -y --setopt=install_weak_deps=False ${INSTALL[@]}
 dnf5 remove -y ${REMOVE[@]}
 
