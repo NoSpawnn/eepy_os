@@ -24,7 +24,7 @@ fi
 # Download a file from a github release
 # Arguments:
 #   USER        - (string) Username of the github repository owner (e.g. "NoSpawnn")
-#   REPO        - (string) Github repository name (e.g. "nsos")
+#   REPO        - (string) Github repository name (e.g. "eepy_os")
 #   TAG         - (string) Release tag, can be "latest" or a specific tag (e.g. "v1.2.0")
 #   OUTPUT_FILE - (path)   Path to which the file will be saved
 get_file_from_github() {

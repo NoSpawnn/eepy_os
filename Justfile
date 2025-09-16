@@ -1,4 +1,4 @@
-export image_name := env("IMAGE_NAME", "nsos") # output image name, usually same as repo name, change as needed
+export image_name := env("IMAGE_NAME", "eepy_os") # output image name, usually same as repo name, change as needed
 export default_tag := env("DEFAULT_TAG", "latest")
 export bib_image := env("BIB_IMAGE", "quay.io/centos-bootc/bootc-image-builder:latest")
 
@@ -110,7 +110,7 @@ buildrun $target_image=image_name $tag=default_tag:
         exit
     fi
 
-    podman run -it --rm localhost/nsos:latest
+    podman run -it --rm localhost/eepy_os:latest
 
 # Command: _rootful_load_image
 # Description: This script checks if the current user is root or running under sudo. If not, it attempts to resolve the image tag using podman inspect.

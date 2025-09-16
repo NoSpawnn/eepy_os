@@ -34,6 +34,10 @@ dnf5 remove -y ${REMOVE[@]}
 
 ln -sf /usr/bin/nvim /usr/bin/vim
 
+# Run branding early on since os-release is overwritten,
+# make sure the versions of things are right, mainly copr repos
+bash /ctx/system_config/branding.sh
+
 INSTALL_SCRIPTS=(
     eza.sh
     incus.sh
@@ -50,10 +54,12 @@ done
 
 # System config
 
+# Remove the default system flathub remote
+flatpak remote-delete --system flathub
+
 SYSTEM_CONFIG_SCRIPTS=(
-    nsos-just.sh
+    eepy-just.sh
     flatpak-system-remote-setup.sh
-    branding.sh
     udev/fancontrol.sh
 )
 
@@ -71,13 +77,13 @@ for unit in ${SYSTEM_UNITS[@]}; do
     systemctl enable $unit
 done
 
-GLOBAL_UNITS=(
-    # add-user-flathub-remote.service
-)
+# GLOBAL_UNITS=(
+#     add-user-flathub-remote.service
+# )
 
-for unit in ${GLOBAL_UNITS[@]}; do
-    if [[ -e /ctx/systemd/$unit ]]; then
-        cp /ctx/systemd/$unit /etc/systemd/user/
-    fi
-    systemctl enable --global $unit
-done
+# for unit in ${GLOBAL_UNITS[@]}; do
+#     if [[ -e /ctx/systemd/$unit ]]; then
+#         cp /ctx/systemd/global/$unit /etc/systemd/user/
+#     fi
+#     systemctl enable --global $unit
+# done
