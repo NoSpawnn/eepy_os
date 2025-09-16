@@ -2,7 +2,7 @@
 
 # Replace ublue-os ujust with my own
 
-set -ouex pipefail
+set -euxo pipefail
 
 NSOS_DIR=/usr/share/nsos
 mkdir $NSOS_DIR

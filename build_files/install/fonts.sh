@@ -1,12 +1,14 @@
 #/usr/bin/env bash
 # https://docs.fedoraproject.org/en-US/quick-docs/fonts/
 
-set -euox pipefail
+set -euxo pipefail
+
+source $UTILS_SH
 
 TEMP=$(mktemp -d)
 FONT_DIR=/usr/share/fonts/0xproto
 
-curl -fLs https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/0xProto.zip -o $TEMP/0xproto.zip
+get_file_from_github "ryanoasis/nerd-fonts" "v3.4.0" "0xProto.zip" "$TEMP/0xproto.zip"
 unzip $TEMP/0xproto.zip -d $TEMP
 
 mkdir -p $FONT_DIR

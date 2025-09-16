@@ -1,9 +1,11 @@
 #!/bin/bash
 
-set -ouex pipefail
+set -euxo pipefail
+
+UTILS_SH="/ctx/utils.sh"
+source "$UTILS_SH"
 
 # Install packages (a lot of these will eventually be moved to a distrobox I think)
-
 INSTALL=(
     zsh
     tailscale
@@ -23,7 +25,7 @@ INSTALL=(
 REMOVE=(
     vim-common vim-data vim-enhanced vim-filesystem vim-minimal # Nuke regular vim
     firefox firefox-langpacks
-    nvtop
+    nvtop # WE ARE AN AMD HOUSEHOLD
 )
 
 dnf5 update -y
@@ -43,7 +45,7 @@ INSTALL_SCRIPTS=(
 )
 
 for s in ${INSTALL_SCRIPTS[@]}; do
-    bash /ctx/install/$s
+    UTILS_SH="$UTILS_SH" bash /ctx/install/$s
 done
 
 # System config

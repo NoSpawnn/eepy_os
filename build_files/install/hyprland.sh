@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euox pipefail
+set -euxo pipefail
 
 PACKAGES=(
     hyprland

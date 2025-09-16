@@ -1,7 +1,9 @@
 #/usr/bin/env bash
 # ly v1.1.1 requires zig 0.14.x
 
-set -euox pipefail
+set -euxo pipefail
+
+source $UTILS_SH
 
 BUILD_DEPS=(
     kernel-devel
