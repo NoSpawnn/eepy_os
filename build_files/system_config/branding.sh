@@ -34,7 +34,7 @@ sed -i -e "s|NAME=.*|NAME=${NAME}|" \
        -e "s|HOME_URL=.*|HOME_URL=${HOME_URL}|" \
        -e "s|DOCUMENTATION_URL=.*|DOCUMENTATION_URL=${DOCUMENTATION_URL}|" \
        -e "s|SUPPORT_URL=.*|SUPPORT_URL=${SUPPORT_URL}|" \
-       -e "s|ANSI_COLOR=.*|ANSI_COLOR=${ANSI_COLOR}|" \
+       -e "s|ANSI_COLOR=.*|ANSI_COLOR=\"${ANSI_COLOR}\"|" \
        /usr/lib/os-release
 
 cat <<EOF >> /usr/lib/os-release
