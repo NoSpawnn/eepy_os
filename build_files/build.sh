@@ -7,7 +7,6 @@ source "$UTILS_SH"
 
 # Install packages (a lot of these will eventually be moved to a distrobox I think)
 INSTALL=(
-    zsh
     tailscale
     fastfetch
     flatpak
@@ -18,9 +17,6 @@ INSTALL=(
     mesa-dri-drivers
     mesa-vdpau-drivers
     mesa-vulkan-drivers
-    stow
-    zsh-autosuggestions
-    tldr
 )
 REMOVE=(
     vim-common vim-data vim-enhanced vim-filesystem vim-minimal # Nuke regular vim
