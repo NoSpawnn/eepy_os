@@ -7,6 +7,8 @@ source "$UTILS_SH"
 
 # Install packages in the system
 INSTALL=(
+    zsh
+    zsh-autosuggestions
     tailscale
     fastfetch
     flatpak
