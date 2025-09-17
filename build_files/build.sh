@@ -5,7 +5,7 @@ set -euxo pipefail
 UTILS_SH="/ctx/utils.sh"
 source "$UTILS_SH"
 
-# Install packages (a lot of these will eventually be moved to a distrobox I think)
+# Install packages in the system
 INSTALL=(
     tailscale
     fastfetch
@@ -37,7 +37,6 @@ bash /ctx/system_config/branding.sh
 INSTALL_SCRIPTS=(
     eza.sh
     incus.sh
-    ohmyposh.sh
     # ly/ly.sh
     hyprland.sh
     amdgpu_top.sh
