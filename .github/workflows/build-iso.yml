@@ -2,6 +2,8 @@
 name: Build disk images
 
 on:
+  schedule:
+    - cron: "0 0 1 * *" # First of every month at 00:00
   workflow_dispatch:
     inputs:
       upload-to-s3:
