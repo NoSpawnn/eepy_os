@@ -20,6 +20,4 @@ PACKAGES=(
     rocm-smi
 )
 
-for package in ${PACKAGES[@]}; do
-    dnf5 install -y "$package"
-done
+dnf5 install -y ${PACKAGES[@]}

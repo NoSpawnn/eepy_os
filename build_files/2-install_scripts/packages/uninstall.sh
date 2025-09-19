@@ -10,6 +10,4 @@ PACKAGES=(
     toolbox # Using distrobox instead
 )
 
-for package in ${PACKAGES[@]}; do
-    dnf5 install -y "$package"
-done
+dnf5 remove -y ${PACKAGES[@]}
