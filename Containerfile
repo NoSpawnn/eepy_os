@@ -37,6 +37,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
+    "$INSTALL_SCRIPTS_SH_DIR/fonts.sh" && \
     "$INSTALL_SCRIPTS_SH_DIR/binaries/hyprland.sh" && \
     "$INSTALL_SCRIPTS_SH_DIR/binaries/amdgpu_top.sh" && \
     "$INSTALL_SCRIPTS_SH_DIR/binaries/eza.sh" && \
