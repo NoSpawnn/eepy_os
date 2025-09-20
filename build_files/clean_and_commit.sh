@@ -2,7 +2,7 @@
 
 # Thanks https://github.com/ublue-os/bazzite/blob/main/build_files/cleanup
 
-set -eoux pipefail
+set -euxo pipefail
 
 dnf5 clean all
 rm -rf /tmp/* || true
