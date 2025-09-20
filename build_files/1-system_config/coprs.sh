@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euxo pipefail
+
 COPRS_ENABLED=(
     "bazzite-org/bazzite"
     "bazzite-org/bazzite-multilib"
