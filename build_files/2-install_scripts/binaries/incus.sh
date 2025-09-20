@@ -29,6 +29,3 @@ get_file_from_github "mobydeck/ssh2incus" "latest" ".*x86_64\.rpm" "$TEMP/ssh2in
 dnf install -y $TEMP/ssh2incus.rpm
 
 rm -r $TEMP
-
-systemctl enable incus.service
-systemctl enable ssh2incus.service

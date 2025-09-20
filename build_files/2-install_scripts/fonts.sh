@@ -1,4 +1,5 @@
 #/usr/bin/env bash
+
 # https://docs.fedoraproject.org/en-US/quick-docs/fonts/
 
 set -euxo pipefail
