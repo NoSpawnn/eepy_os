@@ -1,14 +1,30 @@
 #!/usr/bin/env bash
 
-set -euxo pipefail
+set -exo pipefail
 
-COPRS_ENABLED=(
+if [[ -z "$1" ]]; then
+    exit 1
+fi
+
+if [[ "$1" =~ ^- && ! "$1" == "--" ]]; then case "$1" in
+  --enable )
+    ACTION="enable"
+    ;;
+  --disable )
+    ACTION="disable"
+    ;;
+esac; fi
+shift
+
+COPRS=(
     "bazzite-org/bazzite"
     "bazzite-org/bazzite-multilib"
     "ublue-os/staging"
 )
 
-for copr in ${COPRS_ENABLED[@]}; do
-    dnf5 -y copr enable "$copr"
-    dnf5 -y config-manager setopt copr:copr.fedorainfracloud.org:${copr////:}.priority=98 ;
+for copr in ${COPRS[@]}; do
+    dnf5 -y copr "$ACTION" "$copr"
+    if [[ "$ACTION" == "enable" ]]; then
+        dnf5 -y config-manager setopt copr:copr.fedorainfracloud.org:${copr////:}.priority=98
+    fi
 done
