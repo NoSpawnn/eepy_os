@@ -7,6 +7,6 @@ _default:
     /usr/bin/ujust --list --list-heading $'Available commands:\n' --list-prefix $' - '
 
 # Imports
-import "./just/00-system.just"
-import "./just/10-virtualisation.just"
-import "./just/20-config.just"
+import "./00-system.just"
+import "./10-virtualisation.just"
+import "./20-config.just"
