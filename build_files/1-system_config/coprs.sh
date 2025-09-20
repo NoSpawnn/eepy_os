@@ -3,6 +3,7 @@
 set -exo pipefail
 
 if [[ -z "$1" ]]; then
+    echo "coprs.sh requires an argument, one of: --enable --disable"
     exit 1
 fi
 
