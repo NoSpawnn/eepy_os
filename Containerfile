@@ -44,6 +44,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     "$INSTALL_SCRIPTS_SH_DIR/binaries/incus.sh" && \
     "$INSTALL_SCRIPTS_SH_DIR/packages/utilities.sh" && \
     "$INSTALL_SCRIPTS_SH_DIR/packages/patches-swaps.sh" && \
+    "$INSTALL_SCRIPTS_SH_DIR/packages/uninstall.sh" && \
     "$CLEAN_SH"
 
 # systemd services
