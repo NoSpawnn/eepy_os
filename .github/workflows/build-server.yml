@@ -17,10 +17,15 @@ on:
 
   workflow_dispatch:
 
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+
 jobs:
   build_image:
     name: Build image
-    uses: ${GITHUB_WORKSPACE}/.github/workflows/build-image.yml
+    uses: ./.github/workflows/build-image.yml
     secrets: inherit
     strategy:
       fail-fast: true
