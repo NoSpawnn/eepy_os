@@ -12,8 +12,6 @@ ID="eepy_os"
 ID_LIKE="fedora"
 VERSION_ID="$(rpm -E %fedora)"
 PLATFORM_ID="platform:f$VERSION_ID"
-VARIANT="Desktop"
-VARIANT_ID="desktop"
 IMAGE_ID="eepy_os"
 RELEASE_TYPE="stable"
 DEFAULT_HOSTNAME="eepy"
@@ -39,7 +37,7 @@ sed -i -e "s|NAME=.*|NAME=${NAME}|" \
 
 cat <<EOF >> /usr/lib/os-release
 ID_LIKE=${ID_LIKE}
-VARIANT=${VARIANT}
-VARIANT_ID=${VARIANT_ID}
 RELEASE_TYPE=${RELEASE_TYPE}
+VARIANT=${VARIANT^}
+VARIANT_ID=${VARIANT,,}
 EOF
