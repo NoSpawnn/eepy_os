@@ -1,0 +1,35 @@
+---
+name: Build desktop container image
+on:
+  pull_request:
+    branches:
+      - main
+
+  schedule:
+    - cron: "05 10 * * *" # 10:05am UTC everyday
+
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
+      - "server.containerfile"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+
+jobs:
+  build_image:
+    name: Build image
+    uses: ./.github/workflows/build-image.yml
+    secrets: inherit
+    strategy:
+      fail-fast: true
+      matrix:
+        image_flavor: ["desktop"]
+    with:
+      image_flavor: ${{ matrix.image_flavor }}
