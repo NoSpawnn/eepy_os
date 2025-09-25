@@ -12,7 +12,7 @@ ENV CLEAN_SH "/ctx/clean_and_commit.sh"
 ENV SYSTEM_CONFIG_SH_DIR "/ctx/1-system_config"
 ENV INSTALL_SCRIPTS_SH_DIR "/ctx/2-install_scripts"
 
-# COPY --from=ctx /1-system_config/files /
+COPY --from=ctx /1-system_config/files /
 
 # System configuration
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \

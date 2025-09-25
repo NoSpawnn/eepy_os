@@ -1,15 +1,3 @@
-# Enable automatic LUKS unlock via TPM
-[group('System')]
-setup-luks-tpm-unlock:
-    #!/usr/bin/env bash
-    sudo /usr/libexec/luks-enable-tpm2-autounlock
-
-# Disable automatic LUKS unlock via TPM
-[group('System')]
-remove-luks-tpm-unlock:
-    #!/usr/bin/env bash
-    sudo /usr/libexec/luks-disable-tpm2-autounlock
-
 # Boot into this device's BIOS/UEFI screen
 [group('System')]
 bios:

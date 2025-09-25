@@ -5,9 +5,7 @@
 set -euxo pipefail
 
 PACKAGES=(
-    firefox firefox-langpacks
-    nvtop # WE ARE AN AMD HOUSEHOLD
-    toolbox # Using distrobox instead
+    toolbox
 )
 
 dnf5 remove -y ${PACKAGES[@]}

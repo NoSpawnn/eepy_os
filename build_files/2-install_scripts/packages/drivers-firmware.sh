@@ -10,14 +10,14 @@ PACKAGES=(
     mesa-libEGL
     mesa-libGL
     mesa-libgbm
-    mesa-va-drivers
-    mesa-vulkan-drivers
+    # mesa-va-drivers
+    # mesa-vulkan-drivers
     mesa-dri-drivers
-    mesa-vdpau-drivers
-    rocm-hip
-    rocm-opencl
-    rocm-clinfo
-    rocm-smi
+    # mesa-vdpau-drivers
+    # rocm-hip
+    # rocm-opencl
+    # rocm-clinfo
+    # rocm-smi
 )
 
 dnf5 install -y ${PACKAGES[@]}

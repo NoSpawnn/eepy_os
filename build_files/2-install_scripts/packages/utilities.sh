@@ -3,11 +3,11 @@
 set -euxo pipefail
 
 PACKAGES=(
-    zsh
     tailscale
     fastfetch
-    neovim
     waypipe
+    just
+    dmidecode
 )
 
 dnf5 install -y ${PACKAGES[@]}
