@@ -4,10 +4,8 @@ set -euxo pipefail
 
 PACKAGES=(
     zsh
-    zsh-autosuggestions
     tailscale
     fastfetch
-    flatpak
     neovim
 )
 
