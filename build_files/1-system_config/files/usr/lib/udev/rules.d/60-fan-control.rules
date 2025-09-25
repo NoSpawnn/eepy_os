@@ -1,1 +1,0 @@
-SUBSYSTEM=="hwmon", RUN+="/bin/sh -c '/bin/chmod a+w /sys%p/pwm* || true'"

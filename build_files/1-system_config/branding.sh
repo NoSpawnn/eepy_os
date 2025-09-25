@@ -21,6 +21,8 @@ DOCUMENTATION_URL="https://github.com/NoSpawnn/eepy_os"
 BUG_REPORT_URL="https://github.com/NoSpawnn/eepy_os/issues/"
 SUPPORT_URL="https://github.com/NoSpawnn/eepy_os/issues/"
 ANSI_COLOR="0;35"
+VARIANT="Server"
+VARIANT_ID="server"
 
 sed -i -e "s|NAME=.*|NAME=${NAME}|" \
        -e "s|PRETTY_NAME=.*|PRETTY_NAME=${PRETTY_NAME}|" \
@@ -38,6 +40,6 @@ sed -i -e "s|NAME=.*|NAME=${NAME}|" \
 cat <<EOF >> /usr/lib/os-release
 ID_LIKE=${ID_LIKE}
 RELEASE_TYPE=${RELEASE_TYPE}
-VARIANT=${VARIANT^}
-VARIANT_ID=${VARIANT,,}
+VARIANT=${VARIANT}
+VARIANT_ID=${VARIANT_ID}
 EOF

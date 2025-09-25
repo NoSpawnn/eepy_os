@@ -2,4 +2,5 @@
 
 ![eepy cat](./assets/eepy.png)
 
-- My custom fedora atomic OS! Based on uBlue-main and built using the uBlue image template
+- Customised Fedora Atomic OS for servers that never sleep
+- Based on `ublue-os/ucore` and built using the uBlue image template
