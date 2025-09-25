@@ -7,6 +7,7 @@ PACKAGES=(
     tailscale
     fastfetch
     neovim
+    waypipe
 )
 
 dnf5 install -y ${PACKAGES[@]}
