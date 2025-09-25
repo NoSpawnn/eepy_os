@@ -1,27 +1,36 @@
 ---
 name: Build container image
 on:
-  workflow_call:
-    inputs:
-      image_flavor: # "desktop" or "server"
-        type: string
-        required: true
+  pull_request:
+    branches:
+      - main
+
+  schedule:
+    - cron: "05 10 * * *" # 10:05am UTC everyday
+
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
+
+  workflow_dispatch:
 
 env:
-  IMAGE_DESC: "My Customized Universal Blue Image"
-  IMAGE_KEYWORDS: "bootc,ublue,universal-blue"
+  IMAGE_DESC: "Fedora Atomic OS for servers that never sleep"
+  IMAGE_KEYWORDS: "bootc,ublue,universal-blue,ucore"
   IMAGE_LOGO_URL: "https://avatars.githubusercontent.com/u/120078124?s=200&v=4" # Put your own image here for a fancy profile on https://artifacthub.io/!
   IMAGE_NAME: "${{ github.event.repository.name }}" # output image name, usually same as repo name
   IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"
-  TAG: ${{ inputs.image_flavor == 'desktop' && 'latest' || 'ucore' }}
+  TAG: latest
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}-${{ inputs.brand_name}}-${{ inputs.stream_name }}
+  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:
   build_push:
-    name: Build and push ${{ inputs.image_flavor }} image
+    name: Build and push eepy_OS image
     runs-on: ubuntu-24.04
 
     permissions:
@@ -96,7 +105,7 @@ jobs:
         uses: redhat-actions/buildah-build@7a95fa7ee0f02d552a32753e7414641a04307056 # v2
         with:
           containerfiles: |
-            ./containerfiles/${{ inputs.image_flavor }}.containerfile
+            ./containerfile
           # Postfix image name with -custom to make it a little more descriptive
           # Syntax: https://docs.github.com/en/actions/learn-github-actions/expressions#format
           image: ${{ env.IMAGE_NAME }}
