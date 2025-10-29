@@ -8,7 +8,7 @@ set -euxo pipefail
 
 source $UTILS_SH
 
-dnf5 install -y incus incus-agent qemu-system-x86
+dnf5 install -y incus incus-agent qemu-system-x86 qemu-img
 
 TEMP=$(mktemp -d)
 
@@ -23,6 +23,10 @@ rm $INCUS_AGENT_PATH
 get_file_from_github "lxc/incus" "latest" "bin.linux.incus-agent.x86_64" "$TEMP/incus-agent"
 mv $TEMP/incus-agent $INCUS_AGENT_PATH
 chmod 0755 $INCUS_AGENT_PATH
+
+# Fix sub*id
+echo "root:1000000:1000000000" >> /etc/subuid
+echo "root:1000000:1000000000" >> /etc/subgid
 
 # Also install ssh2inucus - https://github.com/mobydeck/ssh2incus
 get_file_from_github "mobydeck/ssh2incus" "latest" ".*x86_64\.rpm" "$TEMP/ssh2incus.rpm"
