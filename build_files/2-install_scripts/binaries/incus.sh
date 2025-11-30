@@ -25,8 +25,8 @@ mv $TEMP/incus-agent $INCUS_AGENT_PATH
 chmod 0755 $INCUS_AGENT_PATH
 
 # Fix sub*id
-echo "root:1000000:1000000000" >> /etc/subuid
-echo "root:1000000:1000000000" >> /etc/subgid
+echo "root:1000000:1000000000" >> /usr/etc/subuid
+echo "root:1000000:1000000000" >> /usr/etc/subgid
 
 # Also install ssh2inucus - https://github.com/mobydeck/ssh2incus
 get_file_from_github "mobydeck/ssh2incus" "latest" ".*x86_64\.rpm" "$TEMP/ssh2incus.rpm"
